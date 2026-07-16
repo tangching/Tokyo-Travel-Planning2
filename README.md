@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>美馬溝東京六日遊</title>
+    <title>東京爆買啦 ❤️</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -16,7 +16,8 @@
     <div id="app" class="max-w-md mx-auto">
         <header class="bg-white p-6 rounded-b-[32px] shadow-sm sticky top-0 z-20">
             <h1 class="text-2xl font-bold text-blue-900">美馬溝東京六日遊 🗼</h1>
-            <p class="text-sm text-gray-400">8/7 (五) - 8/12 (三)</p>
+            <p class="text-base font-bold text-pink-500">東京爆買啦 ❤️</p>
+            <p class="text-xs text-gray-400">8/7 (五) - 8/12 (三)</p>
         </header>
 
         <!-- Top Tabs -->
