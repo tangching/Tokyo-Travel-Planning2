@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>東京爆買啦 ❤️</title>
+    <title>美馬溝東京六日遊</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -17,7 +17,7 @@
         <header class="bg-white p-6 rounded-b-[32px] shadow-sm sticky top-0 z-20">
             <h1 class="text-2xl font-bold text-blue-900">美馬溝東京六日遊 🗼</h1>
             <p class="text-base font-bold text-pink-500">東京爆買啦 ❤️</p>
-            <p class="text-xs text-gray-400">8/7 (五) - 8/12 (三)</p>
+            <p class="text-xs text-gray-400">2026年 8/7 (五) - 8/12 (三)</p>
         </header>
 
         <!-- Top Tabs -->
@@ -52,37 +52,45 @@
                 { time: "21:45-22:00", name: "回飯店", desc: "東西線15分，確認最晚22:00 check in。" }
             ]},
             "Day 2": { title: "8/8 (六) 明治神宮 · 澀谷", items: [
-                { time: "08:40", name: "前往明治神宮", desc: "東西線+千代田線，35分。記得買早餐。" },
+                { time: "08:40-09:25", name: "前往明治神宮", desc: "東西線+千代田線，35分。記得買早餐。" },
                 { time: "09:30-10:40", name: "明治神宮", desc: "散步參拜。" },
                 { time: "10:45-12:15", name: "竹下通", desc: "@cosme, Converse, 3COINS, VIVAIA。" },
                 { time: "12:15-13:30", name: "午餐", desc: "原宿/表參道。" },
                 { time: "13:30-16:00", name: "表參道/貓街", desc: "Onitsuka, SOU·SOU, TEAPOND, 東急PLAZA, HUMAN MADE。" },
                 { time: "16:00-17:20", name: "澀谷", desc: "PARCO(寶可夢中心), 迪士尼商店, Harbs。" },
                 { time: "17:30-19:00", name: "SHIBUYA SKY", desc: "預約黃昏(約18:40日落)，拍攝剪影。" },
-                { time: "19:15-20:30", name: "晚餐：燒肉Aburu", desc: "大塚站，必吃！記得訂位。" }
+                { time: "19:15-20:30", name: "晚餐：燒肉Aburu", desc: "大塚站，必吃！記得訂位。" },
+                { time: "20:30-22:30", name: "逛逛/拍拍", desc: "澀谷十字路口、回飯店。" }
             ]},
             "Day 3": { title: "8/9 (日) 鎌倉 · 江之島", items: [
-                { time: "07:50", name: "前往鎌倉", desc: "JR東京->鎌倉，超商早餐車上吃。" },
+                { time: "07:50-09:40", name: "前往鎌倉", desc: "JR東京->鎌倉，超商早餐車上吃。" },
                 { time: "09:40-11:15", name: "小町通", desc: "邊走邊吃，尋找美食。" },
                 { time: "11:15-12:15", name: "鶴岡八幡宮", desc: "參拜，記得準備零錢。" },
+                { time: "12:30-12:55", name: "江之電", desc: "前往鎌倉高校前。" },
                 { time: "12:55-13:30", name: "灌籃高手平交道", desc: "希望看得到富士山！拍完就撤。" },
                 { time: "14:00-16:30", name: "江之島", desc: "Sea Candle燈塔、岩屋(超推)。" },
+                { time: "16:30-19:00", name: "新宿", desc: "小田急直達，逛AUX PARADIS。" },
                 { time: "19:00-21:00", name: "晚餐：GyuTongue", desc: "牛舌料理，需預訂。" }
             ]},
             "Day 4": { title: "8/10 (一) 迪士尼海洋", items: [
-                { time: "06:50", name: "前往舞濱", desc: "東西線+日比谷線+京葉線(30分)。" },
+                { time: "06:50-07:30", name: "前往舞濱", desc: "東西線+日比谷線+京葉線(30分)。" },
                 { time: "08:00-21:10", name: "迪士尼海洋", desc: "全日暢玩，記得提前確認DPA。" },
                 { time: "21:10-22:15", name: "回飯店", desc: "玩累了休息。" }
             ]},
             "Day 5": { title: "8/11 (二) 淺草 · 銀座 · 六本木", items: [
+                { time: "10:00-10:30", name: "前往淺草", desc: "東西線+銀座線(25分)。" },
                 { time: "10:30-12:00", name: "淺草浴衣", desc: "預約著裝，逛雷門、淺草寺。" },
+                { time: "12:00-13:00", name: "午餐", desc: "吃美食。" },
                 { time: "13:30-15:00", name: "銀座", desc: "步行者天國，逛Loft, GINZA SIX。" },
+                { time: "15:20-17:00", name: "逛逛", desc: "油炸三明治、泡芙。" },
                 { time: "17:55-19:30", name: "晚餐：入鹿TOKYO", desc: "六本木，拉麵(不收現金)。" },
-                { time: "19:50-20:40", name: "東京鐵塔", desc: "芝公園拍夜景。" }
+                { time: "19:50-20:40", name: "東京鐵塔", desc: "芝公園拍夜景。" },
+                { time: "20:45-21:15", name: "回飯店", desc: "大江戶線直達。" }
             ]},
             "Day 6": { title: "8/12 (三) 返家", items: [
-                { time: "10:00", name: "退房", desc: "11:00前務必退房。" },
-                { time: "10:45", name: "Access特急", desc: "日本橋->成田，認明「成田空港行」。" },
+                { time: "10:00-10:15", name: "退房", desc: "11:00前務必退房。" },
+                { time: "10:45-11:50", name: "Access特急", desc: "日本橋->成田，認明「成田空港行」。" },
+                { time: "12:00-13:00", name: "機場報到", desc: "最晚12:00到機場。" },
                 { time: "13:00-14:30", name: "免稅店", desc: "趕快補貨！" },
                 { time: "14:30", name: "起飛返台", desc: "CI101 17:15抵達。" }
             ]}
@@ -106,12 +114,20 @@
         function renderContent(tab = 'itinerary', day = "Day 1") {
             const content = document.getElementById('content');
             
+            // Update Tab states
             document.querySelectorAll('button[id^="tab-"]').forEach(btn => {
                 btn.classList.remove('tab-active', 'text-blue-800');
                 btn.classList.add('text-gray-400');
             });
+            document.querySelectorAll('button[id^="nav-"]').forEach(btn => {
+                btn.classList.remove('text-blue-800');
+                btn.classList.add('text-gray-400');
+            });
+            
             const tabBtn = document.getElementById('tab-' + tab);
             if(tabBtn) { tabBtn.classList.add('tab-active', 'text-blue-800'); tabBtn.classList.remove('text-gray-400'); }
+            const navBtn = document.getElementById('nav-' + tab);
+            if(navBtn) { navBtn.classList.remove('text-gray-400'); navBtn.classList.add('text-blue-800'); }
 
             if(tab === 'itinerary') {
                 content.innerHTML = `
@@ -187,8 +203,8 @@
                 <div class="card p-6 bg-yellow-50 border-t-8 border-yellow-300">
                     <h2 class="text-xl font-bold mb-4 text-yellow-800">📝 備忘錄</h2>
                     <div class="mb-6">
-                        <h3 class="font-bold text-gray-700 mb-2">➕ 新增連結</h3>
-                        <input type="text" id="link-title" placeholder="名稱" class="w-full p-2 mb-1 rounded border">
+                        <h3 class="font-bold text-gray-700 mb-2">➕ 新增常用連結</h3>
+                        <input type="text" id="link-title" placeholder="連結名稱" class="w-full p-2 mb-1 rounded border">
                         <input type="text" id="link-url" placeholder="網址 (https://...)" class="w-full p-2 mb-2 rounded border">
                         <button onclick="addCustomLink()" class="w-full bg-blue-600 text-white font-bold py-2 rounded">新增連結</button>
                     </div>
@@ -201,7 +217,7 @@
                         `).join('')}
                     </div>
                     <div>
-                        <h3 class="font-bold text-gray-700 mb-2">✏️ 自動儲存筆記</h3>
+                        <h3 class="font-bold text-gray-700 mb-2">✏️ 自訂筆記 (自動儲存)</h3>
                         <textarea id="memo-text" class="w-full h-32 p-3 rounded-lg border border-gray-300 shadow-inner"></textarea>
                     </div>
                 </div>`;
@@ -228,6 +244,7 @@
             renderContent('memo');
         }
 
+        // Initial render
         renderContent();
     </script>
 </body>
