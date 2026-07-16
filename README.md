@@ -145,13 +145,22 @@
                     </div>`;
             } else if(tab === 'guide') {
                 content.innerHTML = `
-                    <div class="card p-6">
-                        <h2 class="text-xl font-bold mb-4">📍 旅遊地圖指南</h2>
+                    <div class="card p-6 mb-4">
+                        <h2 class="text-xl font-bold mb-4 text-blue-900">📍 分區行程指南</h2>
                         <ul class="space-y-4 text-sm">
-                            <li class="bg-blue-50 p-3 rounded-lg">🗼 <strong>東京 / 銀座：</strong> 主要購物中心。需注意部分伴手禮店(如Brulee Merize)打烊時間。</li>
-                            <li class="bg-blue-50 p-3 rounded-lg">⛩️ <strong>原宿 / 澀谷：</strong> 表參道/貓街超好逛，澀谷Sky與部分餐廳(燒肉Aburu)務必提前預約。</li>
-                            <li class="bg-blue-50 p-3 rounded-lg">🌊 <strong>鎌倉 / 江之島：</strong> 江之電轉乘，注意海邊風大防曬。岩屋與燈塔是必去景點。</li>
-                            <li class="bg-blue-50 p-3 rounded-lg">🏰 <strong>舞濱：</strong> 迪士尼樂園。記得提早買票與預約DPA。</li>
+                            <li class="bg-blue-50 p-3 rounded-lg">🗼 <strong>東京 / 銀座：</strong> 主要購物中心。需注意部分伴手禮店(如Brulee Merize)打烊時間，建議提早購買以免向隅。</li>
+                            <li class="bg-blue-50 p-3 rounded-lg">⛩️ <strong>原宿 / 澀谷：</strong> 表參道/貓街超好逛。SHIBUYA SKY 與 燒肉Aburu 務必提前預約並準時抵達。</li>
+                            <li class="bg-blue-50 p-3 rounded-lg">🌊 <strong>鎌倉 / 江之島：</strong> 善用江之電一日券。海邊風大記得防曬，吃東西小心老鷹。岩屋與燈塔是必去景點。</li>
+                            <li class="bg-blue-50 p-3 rounded-lg">🏰 <strong>舞濱 (迪士尼)：</strong> 記得提早買票與預約DPA，入園前先將門票掃描綁定至官方App。</li>
+                        </ul>
+                    </div>
+                    <div class="card p-6">
+                        <h2 class="text-xl font-bold mb-4 text-blue-900">💡 實用旅遊小知識</h2>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex gap-2"><span class="text-lg">💳</span> <div><strong>付款與退稅：</strong>單筆滿5000日圓即可免稅，出門務必帶護照正本。建議同時備妥現金、信用卡與 Apple Pay (Suica)。</div></li>
+                            <li class="flex gap-2"><span class="text-lg">🧳</span> <div><strong>行李寄放：</strong>車站置物櫃 (Coin Locker) 多可用 Suica 付款，大型行李建議提早去搶大櫃子。</div></li>
+                            <li class="flex gap-2"><span class="text-lg">🚇</span> <div><strong>交通乘車：</strong>日本搭乘手扶梯「關東靠左站」。建議下載「乘換案內」App查詢地鐵班次。</div></li>
+                            <li class="flex gap-2"><span class="text-lg">📶</span> <div><strong>入境必備：</strong>Visit Japan Web 務必於出發前截圖 QR Code，加快機場通關速度。</div></li>
                         </ul>
                         <a href="https://www.tokyometro.jp/tcn/subwaymap/" target="_blank" class="block mt-6 bg-blue-600 text-white text-center p-3 rounded-lg font-bold shadow-md active:bg-blue-800">開啟東京地鐵路線圖</a>
                     </div>`;
@@ -171,10 +180,25 @@
 
         function renderMemo() {
             const content = document.getElementById('content');
-            const savedLinks = JSON.parse(localStorage.getItem('myCustomLinks')) || [
+            
+            let savedLinks = JSON.parse(localStorage.getItem('myCustomLinks'));
+            const defaultLinks = [
                 {title: "Visit Japan Web", url: "https://vjw-lp.digital.go.jp/"},
-                {title: "東京地鐵官網", url: "https://www.tokyometro.jp/tcn/"}
+                {title: "東京地鐵官網", url: "https://www.tokyometro.jp/tcn/"},
+                {title: "唐吉訶德 (驚安殿堂)", url: "https://www.donki.com/tcn/"},
+                {title: "日本氣象廳預報", url: "https://www.jma.go.jp/jma/index.html"}
             ];
+
+            // 處理初次載入或是補回缺少的唐吉訶德連結
+            if (!savedLinks || savedLinks.length === 0) {
+                savedLinks = defaultLinks;
+            } else {
+                if (!savedLinks.some(l => l.title.includes('唐吉'))) {
+                    savedLinks.push({title: "唐吉訶德 (驚安殿堂)", url: "https://www.donki.com/tcn/"});
+                    localStorage.setItem('myCustomLinks', JSON.stringify(savedLinks));
+                }
+            }
+
             content.innerHTML = `
                 <div class="card p-6">
                     <h2 class="text-xl font-bold mb-4">📝 備忘錄與實用連結</h2>
