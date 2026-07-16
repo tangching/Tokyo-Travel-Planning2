@@ -39,6 +39,15 @@
     </div>
 
     <script>
+        const weatherData = {
+            "Day 1": { loc: "東京車站", temp: "26°C - 32°C", cond: "晴時多雲", outfit: "輕薄透氣棉麻裝，必帶陽傘與墨鏡。" },
+            "Day 2": { loc: "明治神宮/澀谷", temp: "27°C - 31°C", cond: "多雲時晴", outfit: "休閒球鞋，方便逛街，可帶薄外套。" },
+            "Day 3": { loc: "鎌倉/江之島", temp: "25°C - 29°C", cond: "晴朗", outfit: "輕便短褲、好走的涼鞋，海邊紫外線強記得防曬。" },
+            "Day 4": { loc: "迪士尼海洋", temp: "24°C - 28°C", cond: "午後短暫陣雨", outfit: "舒適休閒服，攜帶輕便雨具，入園方便走動。" },
+            "Day 5": { loc: "淺草/銀座", temp: "28°C - 33°C", cond: "悶熱", outfit: "寬鬆透氣衣物，浴衣體驗當日記得穿內搭涼感衣。" },
+            "Day 6": { loc: "東京", temp: "27°C - 30°C", cond: "晴", outfit: "舒適機上服，寬鬆衣物為主。" }
+        };
+
         const tripData = {
             "Day 1": { title: "8/7 (五) 抵達 · 東京車站之夜", items: [
                 { time: "10:00", name: "桃機集合", desc: "Visit Japan Web QR先填好。" },
@@ -95,6 +104,27 @@
             ]}
         };
 
+        function renderWeather() {
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <div class="space-y-4">
+                    <h2 class="text-xl font-bold mb-4 text-blue-900">🌤️ 每日行程氣象</h2>
+                    ${Object.keys(weatherData).map(day => `
+                        <div class="card p-5 border-l-4 border-blue-400">
+                            <h3 class="font-bold text-lg text-blue-800">${day} - ${weatherData[day].loc}</h3>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="text-2xl font-black text-gray-700">${weatherData[day].temp}</span>
+                                <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-bold">${weatherData[day].cond}</span>
+                            </div>
+                            <div class="mt-3 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
+                                <strong>👕 穿搭建議：</strong> ${weatherData[day].outfit}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
         function renderContent(tab = 'itinerary', day = "Day 1") {
             const content = document.getElementById('content');
             
@@ -129,6 +159,8 @@
                     </div>`;
             } else if(tab === 'memo') {
                 renderMemo();
+            } else if (tab === 'weather') {
+                renderWeather();
             } else {
                 content.innerHTML = `<div class="card p-6 text-center text-gray-500">此頁面為輔助功能，稍後開發中。</div>`;
             }
