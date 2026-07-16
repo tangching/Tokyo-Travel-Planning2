@@ -19,6 +19,7 @@
             <p class="text-sm text-gray-400">8/7 (五) - 8/12 (三)</p>
         </header>
 
+        <!-- Top Tabs -->
         <div class="flex justify-around p-4 mt-2">
             <button onclick="renderContent('itinerary')" id="tab-itinerary" class="tab-active font-bold text-blue-800">行程</button>
             <button onclick="renderContent('guide')" id="tab-guide" class="text-gray-400 font-bold">指南</button>
@@ -28,6 +29,7 @@
 
         <main id="content" class="p-4"></main>
 
+        <!-- Bottom Nav -->
         <nav class="fixed bottom-0 w-full max-w-md bg-white border-t p-4 flex justify-around z-20">
             <button id="nav-itinerary" class="text-blue-800 font-bold" onclick="renderContent('itinerary')">📅 行程</button>
             <button id="nav-guide" class="text-gray-400 font-bold" onclick="renderContent('guide')">🧮 指南</button>
@@ -38,57 +40,76 @@
 
     <script>
         const tripData = {
-            "Day 1": { title: "8/7 (五) 抵達 · 東京車站", items: [
+            "Day 1": { title: "8/7 (五) 抵達 · 東京車站之夜", items: [
                 { time: "10:00", name: "桃機集合", desc: "Visit Japan Web QR先填好。" },
-                { time: "12:15", name: "CI104 飛往成田", desc: "抵達 16:35，機上餐。" },
-                { time: "17:35", name: "Skyliner", desc: "B1京成櫃檯取票，41分抵上野。" },
-                { time: "18:20", name: "轉乘與寄物", desc: "上野至東京，找櫃子寄行李。" },
-                { time: "18:40", name: "晚餐：極味屋", desc: "GRANSTA八重北店，備案要先找好。" },
-                { time: "20:00", name: "一番街掃貨", desc: "Brulee Merize (20:30關) 必買！確認保存期限。" },
-                { time: "22:00", name: "回飯店", desc: "東西線15分，確認最晚22:00入住。" }
+                { time: "12:15-16:35", name: "CI104 飛往成田", desc: "機上餐。" },
+                { time: "16:35-17:30", name: "入境、領行李", desc: "Visit Japan Web QR先填好。" },
+                { time: "17:35-18:20", name: "Skyliner", desc: "B1京成櫃檯取票，41分抵上野。" },
+                { time: "18:20", name: "東京車站", desc: "找櫃子寄放行李。" },
+                { time: "18:40-19:40", name: "晚餐：極味屋", desc: "GRANSTA八重北店，備案要先找好。" },
+                { time: "20:00", name: "東京車站一番街", desc: "Brulee Merize (20:30關) 必買！確認保存期限。" },
+                { time: "21:45-22:00", name: "回飯店", desc: "東西線15分，確認最晚22:00 check in。" }
             ]},
             "Day 2": { title: "8/8 (六) 明治神宮 · 澀谷", items: [
-                { time: "08:40", name: "出發", desc: "東西線+千代田線(35分)，記得買早餐。" },
-                { time: "09:30", name: "明治神宮", desc: "散步參拜。" },
-                { time: "10:45", name: "竹下通", desc: "@cosme, Converse, 3COINS, VIVAIA。" },
-                { time: "13:30", name: "表參道/貓街", desc: "Onitsuka, SOU·SOU, TEAPOND, 東急PLAZA, HUMAN MADE。" },
-                { time: "17:30", name: "SHIBUYA SKY", desc: "預約黃昏(約18:40日落)，拍攝剪影。" },
-                { time: "19:15", name: "晚餐：燒肉Aburu", desc: "大塚站，記得訂位。" }
+                { time: "08:40-09:25", name: "前往明治神宮", desc: "東西線+千代田線，35分。記得買早餐。" },
+                { time: "09:30-10:40", name: "明治神宮", desc: "散步參拜。" },
+                { time: "10:45-12:15", name: "竹下通", desc: "@cosme, Converse, 3COINS, VIVAIA。" },
+                { time: "12:15-13:30", name: "午餐", desc: "原宿/表參道。" },
+                { time: "13:30-16:00", name: "表參道/貓街", desc: "Onitsuka, SOU·SOU, TEAPOND, 東急PLAZA, HUMAN MADE。" },
+                { time: "16:00-17:20", name: "澀谷", desc: "PARCO(寶可夢中心), 迪士尼商店, Harbs。" },
+                { time: "17:30-19:00", name: "SHIBUYA SKY", desc: "預約黃昏(約18:40日落)，拍攝剪影。" },
+                { time: "19:15-20:30", name: "晚餐：燒肉Aburu", desc: "大塚站，必吃！記得訂位。" },
+                { time: "20:30-22:30", name: "逛逛/拍拍", desc: "澀谷十字路口、回飯店。" }
             ]},
             "Day 3": { title: "8/9 (日) 鎌倉 · 江之島", items: [
-                { time: "07:50", name: "出發", desc: "JR橫須賀線，車上吃早餐。" },
-                { time: "09:40", name: "小町通", desc: "邊走邊吃，尋找美食。" },
-                { time: "12:55", name: "灌籃高手平交道", desc: "鎌倉高校前，拍完就撤。" },
-                { time: "14:00", name: "江之島", desc: "辺津宮→Sea Candle燈塔→奧津宮→岩屋(超推)。" },
-                { time: "19:00", name: "晚餐：GyuTongue", desc: "牛舌料理，需預訂。" }
+                { time: "07:50-09:40", name: "前往鎌倉", desc: "JR東京->鎌倉，超商早餐車上吃。" },
+                { time: "09:40-11:15", name: "小町通", desc: "邊走邊吃，尋找美食。" },
+                { time: "11:15-12:15", name: "鶴岡八幡宮", desc: "參拜，記得準備零錢。" },
+                { time: "12:30-12:55", name: "江之電", desc: "前往鎌倉高校前。" },
+                { time: "12:55-13:30", name: "灌籃高手平交道", desc: "希望看得到富士山！拍完就撤。" },
+                { time: "14:00-16:30", name: "江之島", desc: "Sea Candle燈塔、岩屋(超推)。" },
+                { time: "16:30-19:00", name: "新宿", desc: "小田急直達，逛AUX PARADIS。" },
+                { time: "19:00-21:00", name: "晚餐：GyuTongue", desc: "牛舌料理，需預訂。" }
             ]},
             "Day 4": { title: "8/10 (一) 迪士尼海洋", items: [
-                { time: "06:50", name: "前往舞濱", desc: "東西線+日比谷線+京葉線(30分)。" },
-                { time: "08:00", name: "迪士尼海洋", desc: "全日暢玩，記得提前確認DPA。" },
-                { time: "21:10", name: "回飯店", desc: "玩累了休息。" }
+                { time: "06:50-07:30", name: "前往舞濱", desc: "東西線+日比谷線+京葉線(30分)。" },
+                { time: "08:00-21:10", name: "迪士尼海洋", desc: "全日暢玩，記得提前確認DPA。" },
+                { time: "21:10-22:15", name: "回飯店", desc: "玩累了休息。" }
             ]},
             "Day 5": { title: "8/11 (二) 淺草 · 銀座 · 六本木", items: [
-                { time: "10:00", name: "前往淺草", desc: "東西線+銀座線(25分)。" },
-                { time: "10:30", name: "淺草浴衣", desc: "預約著裝，逛雷門/淺草寺。" },
-                { time: "15:00", name: "銀座逛街", desc: "Loft, GINZA SIX, 伊東屋。步行者天國。" },
-                { time: "17:55", name: "晚餐：入鹿TOKYO", desc: "六本木，拉麵(不收現金)。" },
-                { time: "19:50", name: "東京鐵塔", desc: "芝公園拍夜景。" }
+                { time: "10:00-10:30", name: "前往淺草", desc: "東西線+銀座線(25分)。" },
+                { time: "10:30-12:00", name: "淺草浴衣", desc: "預約著裝，逛雷門、淺草寺。" },
+                { time: "12:00-13:00", name: "午餐", desc: "吃美食。" },
+                { time: "13:30-15:00", name: "銀座", desc: "步行者天國，逛Loft, GINZA SIX。" },
+                { time: "15:20-17:00", name: "逛逛", desc: "油炸三明治、泡芙。" },
+                { time: "17:55-19:30", name: "晚餐：入鹿TOKYO", desc: "六本木，拉麵(不收現金)。" },
+                { time: "19:50-20:40", name: "東京鐵塔", desc: "芝公園拍夜景。" },
+                { time: "20:45-21:15", name: "回飯店", desc: "大江戶線直達。" }
             ]},
             "Day 6": { title: "8/12 (三) 返家", items: [
-                { time: "10:00", name: "退房", desc: "11:00前務必退房。" },
-                { time: "10:45", name: "Access特急", desc: "認明「成田空港行」。" },
-                { time: "13:00", name: "免稅店", desc: "趕快補貨！" },
+                { time: "10:00-10:15", name: "退房", desc: "11:00前務必退房。" },
+                { time: "10:45-11:50", name: "Access特急", desc: "日本橋->成田，認明「成田空港行」。" },
+                { time: "12:00-13:00", name: "機場報到", desc: "最晚12:00到機場。" },
+                { time: "13:00-14:30", name: "免稅店", desc: "趕快補貨！" },
                 { time: "14:30", name: "起飛返台", desc: "CI101 17:15抵達。" }
             ]}
         };
 
         function renderContent(tab = 'itinerary', day = "Day 1") {
             const content = document.getElementById('content');
-            document.querySelectorAll('button[id^="tab-"]').forEach(btn => btn.classList.remove('tab-active', 'text-blue-800'));
-            document.querySelectorAll('button[id^="nav-"]').forEach(btn => { btn.classList.remove('text-blue-800'); btn.classList.add('text-gray-400'); });
+            
+            // Update Tab states
+            document.querySelectorAll('button[id^="tab-"]').forEach(btn => {
+                btn.classList.remove('tab-active', 'text-blue-800');
+                btn.classList.add('text-gray-400');
+            });
+            document.querySelectorAll('button[id^="nav-"]').forEach(btn => {
+                btn.classList.remove('text-blue-800');
+                btn.classList.add('text-gray-400');
+            });
             
             const tabBtn = document.getElementById('tab-' + tab);
-            if(tabBtn) tabBtn.classList.add('tab-active', 'text-blue-800');
+            if(tabBtn) { tabBtn.classList.add('tab-active', 'text-blue-800'); tabBtn.classList.remove('text-gray-400'); }
             const navBtn = document.getElementById('nav-' + tab);
             if(navBtn) { navBtn.classList.remove('text-gray-400'); navBtn.classList.add('text-blue-800'); }
 
@@ -115,7 +136,11 @@
 
         function renderMemo() {
             const content = document.getElementById('content');
-            const savedLinks = JSON.parse(localStorage.getItem('myCustomLinks')) || [];
+            const savedLinks = JSON.parse(localStorage.getItem('myCustomLinks')) || [
+                {title: "Visit Japan Web", url: "https://vjw-lp.digital.go.jp/"},
+                {title: "唐吉訶德優惠券", url: "https://www.donki.co.jp/"},
+                {title: "Bic Camera 優惠券", url: "https://www.biccamera.com/"}
+            ];
             
             content.innerHTML = `
                 <div class="card p-6 bg-yellow-50 border-t-8 border-yellow-300">
@@ -128,19 +153,21 @@
                     </div>
                     <div id="links-container" class="space-y-2 mb-6">
                         ${savedLinks.map((l, i) => `
-                            <div class="flex justify-between items-center bg-white p-3 rounded-lg shadow-sm">
-                                <a href="${l.url}" target="_blank" class="text-blue-600 font-bold underline">${l.title}</a>
-                                <button onclick="removeLink(${i})" class="text-red-400 font-bold">✕</button>
+                            <div class="flex justify-between items-center bg-white p-3 rounded-lg shadow-sm border">
+                                <a href="${l.url}" target="_blank" class="text-blue-600 font-bold underline truncate mr-2">${l.title}</a>
+                                <button onclick="removeLink(${i})" class="text-red-400 font-bold px-2">✕</button>
                             </div>
                         `).join('')}
                     </div>
                     <div>
-                        <h3 class="font-bold text-gray-700 mb-2">✏️ 自訂筆記</h3>
-                        <textarea id="memo-text" class="w-full h-32 p-3 rounded-lg border border-gray-300"></textarea>
+                        <h3 class="font-bold text-gray-700 mb-2">✏️ 自訂筆記 (自動儲存)</h3>
+                        <textarea id="memo-text" class="w-full h-32 p-3 rounded-lg border border-gray-300 shadow-inner"></textarea>
                     </div>
                 </div>`;
-            document.getElementById('memo-text').value = localStorage.getItem('tokyoTripMemo') || '';
-            document.getElementById('memo-text').addEventListener('input', (e) => localStorage.setItem('tokyoTripMemo', e.target.value));
+            
+            const memoArea = document.getElementById('memo-text');
+            memoArea.value = localStorage.getItem('tokyoTripMemo') || '';
+            memoArea.addEventListener('input', (e) => localStorage.setItem('tokyoTripMemo', e.target.value));
         }
 
         function addCustomLink() {
@@ -148,18 +175,19 @@
             const url = document.getElementById('link-url').value;
             if(!title || !url) return;
             const links = JSON.parse(localStorage.getItem('myCustomLinks')) || [];
-            links.push({title, url});
+            links.push({title, url: url.startsWith('http') ? url : 'https://' + url});
             localStorage.setItem('myCustomLinks', JSON.stringify(links));
-            renderMemo();
+            renderContent('memo');
         }
 
         function removeLink(index) {
             const links = JSON.parse(localStorage.getItem('myCustomLinks'));
             links.splice(index, 1);
             localStorage.setItem('myCustomLinks', JSON.stringify(links));
-            renderMemo();
+            renderContent('memo');
         }
 
+        // Initial render
         renderContent();
     </script>
 </body>
