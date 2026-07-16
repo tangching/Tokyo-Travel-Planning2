@@ -9,15 +9,26 @@
     <style>
         body { font-family: 'Zen Maru Gothic', sans-serif; background-color: #f8fafc; }
         .tab-active { border-bottom: 3px solid #1e40af; color: #1e40af; }
-        .card { background: white; border-radius: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .card { background: white; border-radius: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 2px solid #fee2e2; }
     </style>
 </head>
 <body class="pb-24">
     <div id="app" class="max-w-md mx-auto">
-        <header class="bg-white p-6 rounded-b-[32px] shadow-sm sticky top-0 z-20">
-            <h1 class="text-2xl font-bold text-blue-900">美馬溝東京六日遊 🗼</h1>
-            <p class="text-base font-bold text-pink-500">東京爆買啦 ❤️</p>
-            <p class="text-xs text-gray-400">2026年 8/7 (五) - 8/12 (三)</p>
+        <header class="bg-white p-6 rounded-b-[32px] shadow-sm sticky top-0 z-20 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-blue-900">美馬溝東京六日遊 🗼</h1>
+                <p class="text-base font-bold text-pink-500">東京爆買啦 ❤️</p>
+                <p class="text-xs text-gray-400">2026年 8/7 (五) - 8/12 (三)</p>
+            </div>
+            <!-- 吉伊卡哇風格插圖 -->
+            <svg viewBox="0 0 100 100" class="w-16 h-16">
+                <circle cx="50" cy="50" r="40" fill="#fff" stroke="#fecaca" stroke-width="4"/>
+                <circle cx="35" cy="40" r="5" fill="#333"/>
+                <circle cx="65" cy="40" r="5" fill="#333"/>
+                <path d="M40 60 Q50 65 60 60" stroke="#333" fill="none" stroke-width="3"/>
+                <circle cx="20" cy="50" r="6" fill="#fecaca" opacity="0.6"/>
+                <circle cx="80" cy="50" r="6" fill="#fecaca" opacity="0.6"/>
+            </svg>
         </header>
 
         <!-- Top Tabs -->
@@ -129,6 +140,14 @@
             const navBtn = document.getElementById('nav-' + tab);
             if(navBtn) { navBtn.classList.remove('text-gray-400'); navBtn.classList.add('text-blue-800'); }
 
+            const cuteFooter = `
+                <div class="flex justify-center mt-6 opacity-50">
+                    <svg viewBox="0 0 100 40" class="w-24 h-10">
+                        <path d="M10 30 Q25 10 40 30 T70 30 T100 30" stroke="#fecaca" fill="none" stroke-width="4"/>
+                    </svg>
+                </div>
+            `;
+
             if(tab === 'itinerary') {
                 content.innerHTML = `
                     <div class="flex gap-2 overflow-x-auto pb-4 mb-2">
@@ -142,7 +161,8 @@
                                 <p class="text-sm text-gray-600 my-1">${item.desc}</p>
                             </div>
                         `).join('')}
-                    </div>`;
+                    </div>
+                    ${cuteFooter}`;
             } else if(tab === 'weather') {
                 content.innerHTML = `
                     <div class="space-y-4">
@@ -159,7 +179,8 @@
                                 </div>
                             </div>
                         `).join('')}
-                    </div>`;
+                    </div>
+                    ${cuteFooter}`;
             } else if(tab === 'guide') {
                 content.innerHTML = `
                     <div class="space-y-4">
