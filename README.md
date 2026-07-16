@@ -146,13 +146,28 @@
             } else if(tab === 'guide') {
                 content.innerHTML = `
                     <div class="space-y-4">
-                        <h2 class="text-xl font-bold mb-4 text-blue-900">📖 旅遊指南</h2>
+                        <h2 class="text-xl font-bold mb-4 text-blue-900">📖 旅遊指南與地圖</h2>
+                        <div class="card p-5 bg-blue-50 border border-blue-100">
+                            <h3 class="font-bold text-blue-800 mb-3 text-lg">📍 景點分區導覽</h3>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>🗼 <strong>東京車站/銀座：</strong> 交通樞紐，適合購物與美食。</li>
+                                <li>⛩️ <strong>原宿/澀谷：</strong> 潮流聚集地，明治神宮、SHIBUYA SKY。</li>
+                                <li>🌊 <strong>鎌倉/江之島：</strong> 海景與復古電車之旅。</li>
+                                <li>🏰 <strong>舞濱：</strong> 東京迪士尼海洋度假區。</li>
+                                <li>🏮 <strong>淺草：</strong> 經典雷門與浴衣散步。</li>
+                            </ul>
+                        </div>
                         ${guideData.map(g => `
                             <div class="card p-5">
                                 <h3 class="font-bold text-blue-800 mb-1">${g.title}</h3>
                                 <p class="text-gray-600">${g.desc}</p>
                             </div>
                         `).join('')}
+                        <div class="card p-5 bg-indigo-900 text-white">
+                            <h3 class="font-bold mb-2">🚇 東京地鐵路線圖</h3>
+                            <p class="text-xs text-indigo-200 mb-4">自助旅遊必備，點擊查看官方地圖。</p>
+                            <a href="https://www.tokyometro.jp/tcn/subwaymap/" target="_blank" class="block w-full bg-white text-indigo-900 text-center py-3 rounded-xl font-bold shadow-lg">查看官方路線圖</a>
+                        </div>
                     </div>`;
             } else if(tab === 'memo') {
                 renderMemo();
