@@ -16,9 +16,9 @@
         <header class="bg-white p-6 shadow-sm sticky top-0 z-20">
             <h1 class="text-2xl font-bold text-blue-900">美馬溝東京六日遊 🗼</h1>
             <p class="text-sm text-gray-500 font-bold mt-1">東京爆買啦 ❤️ (2026)</p>
+            <p class="text-xs text-blue-600 font-bold mt-1">2026/8/7 - 8/12</p>
         </header>
 
-        <!-- Top Tabs -->
         <div class="flex justify-around p-4 mt-2 bg-white mx-4 rounded-xl shadow-sm border border-gray-100">
             <button onclick="renderContent('itinerary')" id="tab-itinerary" class="tab-active font-bold text-blue-800">行程</button>
             <button onclick="renderContent('guide')" id="tab-guide" class="text-gray-400 font-bold">指南</button>
@@ -28,7 +28,6 @@
 
         <main id="content" class="p-4"></main>
 
-        <!-- Bottom Nav -->
         <nav class="fixed bottom-0 w-full max-w-md bg-white border-t p-4 flex justify-around z-20 shadow-lg">
             <button id="nav-itinerary" class="text-blue-800 font-bold flex flex-col items-center" onclick="renderContent('itinerary')"><span class="text-xl">📅</span><span class="text-xs mt-1">行程</span></button>
             <button id="nav-guide" class="text-gray-400 font-bold flex flex-col items-center" onclick="renderContent('guide')"><span class="text-xl">🧮</span><span class="text-xs mt-1">指南</span></button>
