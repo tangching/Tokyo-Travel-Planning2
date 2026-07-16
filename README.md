@@ -23,14 +23,16 @@
             <button onclick="renderContent('itinerary')" id="tab-itinerary" class="tab-active font-bold text-blue-800">行程</button>
             <button onclick="renderContent('guide')" id="tab-guide" class="text-gray-400 font-bold">指南</button>
             <button onclick="renderContent('weather')" id="tab-weather" class="text-gray-400 font-bold">天氣</button>
+            <button onclick="renderContent('memo')" id="tab-memo" class="text-gray-400 font-bold">備忘</button>
         </div>
 
         <main id="content" class="p-4"></main>
 
         <nav class="fixed bottom-0 w-full max-w-md bg-white border-t p-4 flex justify-around z-20">
-            <button class="text-blue-800 font-bold" onclick="renderContent('itinerary')">📅 行程</button>
-            <button class="text-gray-400 font-bold" onclick="renderContent('guide')">🧮 指南</button>
-            <button class="text-gray-400 font-bold" onclick="renderContent('weather')">🌤️ 天氣</button>
+            <button id="nav-itinerary" class="text-blue-800 font-bold" onclick="renderContent('itinerary')">📅 行程</button>
+            <button id="nav-guide" class="text-gray-400 font-bold" onclick="renderContent('guide')">🧮 指南</button>
+            <button id="nav-weather" class="text-gray-400 font-bold" onclick="renderContent('weather')">🌤️ 天氣</button>
+            <button id="nav-memo" class="text-gray-400 font-bold" onclick="renderContent('memo')">📝 備忘</button>
         </nav>
     </div>
 
@@ -83,10 +85,12 @@
         function renderContent(tab = 'itinerary', day = "Day 1") {
             const content = document.getElementById('content');
             document.querySelectorAll('button[id^="tab-"]').forEach(btn => btn.classList.remove('tab-active', 'text-blue-800'));
+            document.querySelectorAll('button[id^="nav-"]').forEach(btn => { btn.classList.remove('text-blue-800'); btn.classList.add('text-gray-400'); });
             
-            // Set nav style
             const tabBtn = document.getElementById('tab-' + tab);
             if(tabBtn) tabBtn.classList.add('tab-active', 'text-blue-800');
+            const navBtn = document.getElementById('nav-' + tab);
+            if(navBtn) { navBtn.classList.remove('text-gray-400'); navBtn.classList.add('text-blue-800'); }
 
             if(tab === 'itinerary') {
                 content.innerHTML = `
@@ -102,26 +106,60 @@
                             </div>
                         `).join('')}
                     </div>`;
-            } else if(tab === 'guide') {
-                content.innerHTML = `
-                    <div class="card p-6">
-                        <h2 class="text-xl font-bold mb-4">旅行指南</h2>
-                        <ul class="space-y-4">
-                            <li class="bg-blue-50 p-4 rounded-lg"><strong>✈️ 機場：</strong> CI104 (去), CI101 (回)。</li>
-                            <li class="bg-blue-50 p-4 rounded-lg"><strong>📱 必備：</strong> Visit Japan Web 已填寫、Skyliner 預約。</li>
-                            <li class="bg-blue-50 p-4 rounded-lg"><strong>👘 浴衣預約：</strong> 記得確認預約時段。</li>
-                            <li class="bg-blue-50 p-4 rounded-lg"><strong>💳 付款：</strong> 準備好SUICA/PASMO，入鹿TOKYO不收現金。</li>
-                        </ul>
-                    </div>`;
+            } else if(tab === 'memo') {
+                renderMemo();
             } else {
-                content.innerHTML = `
-                    <div class="card p-6 text-center">
-                        <h2 class="text-xl font-bold mb-4">天氣資訊</h2>
-                        <p class="text-gray-600">8月東京氣溫約 30-35°C。</p>
-                        <p class="text-sm text-blue-500 mt-2 italic">記得補水與攜帶陽傘防曬！</p>
-                    </div>`;
+                content.innerHTML = `<div class="card p-6 text-center text-gray-500">此頁面為輔助功能，稍後開發中。</div>`;
             }
         }
+
+        function renderMemo() {
+            const content = document.getElementById('content');
+            const savedLinks = JSON.parse(localStorage.getItem('myCustomLinks')) || [];
+            
+            content.innerHTML = `
+                <div class="card p-6 bg-yellow-50 border-t-8 border-yellow-300">
+                    <h2 class="text-xl font-bold mb-4 text-yellow-800">📝 備忘錄</h2>
+                    <div class="mb-6">
+                        <h3 class="font-bold text-gray-700 mb-2">➕ 新增常用連結</h3>
+                        <input type="text" id="link-title" placeholder="連結名稱" class="w-full p-2 mb-1 rounded border">
+                        <input type="text" id="link-url" placeholder="網址 (https://...)" class="w-full p-2 mb-2 rounded border">
+                        <button onclick="addCustomLink()" class="w-full bg-blue-600 text-white font-bold py-2 rounded">新增連結</button>
+                    </div>
+                    <div id="links-container" class="space-y-2 mb-6">
+                        ${savedLinks.map((l, i) => `
+                            <div class="flex justify-between items-center bg-white p-3 rounded-lg shadow-sm">
+                                <a href="${l.url}" target="_blank" class="text-blue-600 font-bold underline">${l.title}</a>
+                                <button onclick="removeLink(${i})" class="text-red-400 font-bold">✕</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-700 mb-2">✏️ 自訂筆記</h3>
+                        <textarea id="memo-text" class="w-full h-32 p-3 rounded-lg border border-gray-300"></textarea>
+                    </div>
+                </div>`;
+            document.getElementById('memo-text').value = localStorage.getItem('tokyoTripMemo') || '';
+            document.getElementById('memo-text').addEventListener('input', (e) => localStorage.setItem('tokyoTripMemo', e.target.value));
+        }
+
+        function addCustomLink() {
+            const title = document.getElementById('link-title').value;
+            const url = document.getElementById('link-url').value;
+            if(!title || !url) return;
+            const links = JSON.parse(localStorage.getItem('myCustomLinks')) || [];
+            links.push({title, url});
+            localStorage.setItem('myCustomLinks', JSON.stringify(links));
+            renderMemo();
+        }
+
+        function removeLink(index) {
+            const links = JSON.parse(localStorage.getItem('myCustomLinks'));
+            links.splice(index, 1);
+            localStorage.setItem('myCustomLinks', JSON.stringify(links));
+            renderMemo();
+        }
+
         renderContent();
     </script>
 </body>
